@@ -1,0 +1,46 @@
+Operation Controller
+====================
+
+A app2u moltes vegades ens trobem amb la necessitat de sincronitzar fitxers que estan a altres ubicacions cap als nostres servidors, és per això que hem desenvolupat un controlador que ens faciliti la vida a l'hora de dur a terme aquestes operacions. Li hem dit Operation Controller. Actualment el tenim desenvolupat però hi ha alguna cosa que no ens acaba d'agradar, ens pots donar un cop de ma? :)
+
+Abans de començar, necessites:
+
+- Instal·lar python3
+
+- Instal·lar el pysftp:
+    pip3 install pysftp
+
+
+1 - Munta el projecte al teu IDE i executa'l (cal executar el main.py). Si et fixes, veuràs que a la carpeta del projecte se t'hi han descarregat 2 fitxers. Un que es diu 'readme.txt' i un que es diu 'googlelogo_color_272x92dp.png'. Perfecte anem bé.
+
+2 - Tot i això, sembla que hi ha alguna cosa que no acaba de funcionar correctament... Fixa't en la informació que printa el programa per consola:
+
+    Start operations
+    Downloading input files from SFTP
+    Downloading readme.txt...
+    Downloading file from https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png...
+    Process finished successfully
+    Process finished with errors  <------!!!!
+
+Com pot ser? primer diu que el procés ha anat bé i després diu que ha tingut errors... i realment, el procés ha anat bé, perquè ha descarregat els dos fitxers que volíem. Saps trobar on està el BUG que fa que aparegui el missatge d'error? Guarda una còpia del projecte un cop solucionat.
+
+3 - Ara que tenim el codi funcionant correctament hi ha una altra cosa que no ens acaba d'agradar. Si et fixes, el nostre controlador (la classe OperationController) importa els diferents tipus d'operacions que existeixen i depen d'aquestes per poder funcionar. Això és un problema per varis motius:
+
+    1 - No te gaire sentit que un controlador d'aquest tipus, hagi de saber de la naturalesa de les operacions que processa. Ell només s'ha d'encarregar de processar operacions
+    2 - Si es vol afegir un nou tipus d'operació cal tocar el codi de l'operation controller, no escala.
+
+Pots modificar el codi del projecte per evitar aquest problema fent servir els principis de la orientació a objectes? Guarda una còpia del projecte un cop solucionat.
+
+4 - Ens agradaria que l'operation controller printi per pantalla el nom de la operació que s'està executant dins del mètode execute_next_operation. També que el printi quan finalitza la operació o en cas d'error. Modifica el codi per afegir aquesta funcionalitat de la forma més ordenada possible i guarda una còpia del projecte un cop fet.
+
+5 - Mirant-ho bé, hi segueix havent una cosa que no ens acaba d'agradar. Si et fixes, les operacions depenen del controller perquè un cop acaben d'executar-se el notifiquen per indicar-li el seu resultat. Què passaria si per exemple les operacions s'executessin des de un altre lloc diferent al controller? com podrien notificar a aquest altre lloc sense haver de modificar el seu codi? Se t'acut com modificar el codi de les operacions per tal d'evitar aquesta dependència (import a OperationController) i que al mateix temps tot segueixi funcionant igual que abans? Guarda una còpia del projecte un cop solucionat.
+
+6 - Hem pensat que no només sincronitzem fitxers a app2U, és molt normal que també sincronitzem dades entre diverses fonts. És per això que hem pensat desenvolupar un nou tipus d'operació. Els seus requeriments són:
+    - Ha de descarregar les dades del següent endpoint: https://gorest.co.in/public-api/users (podeu obtenir informació de com interactuar-hi a: https://gorest.co.in/)
+    - Ha de guardar les dades en un fitxer CSV separat per comes, on cada registre descarregat sigui una línia del fitxer
+
+    Guarda una còpia del projecte un cop solucionat.
+
+Un cop hagis acabat, ens pots enviar un correu amb les solucions de tots els punts?
+
+Moltes gràcies!
